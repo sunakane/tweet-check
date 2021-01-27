@@ -1,6 +1,6 @@
 on:
   pull_request:
-    types: [closed]
+    types: [opened]
 jobs:
   repo-sync:
     if: github.event.pull_request.merged == true
