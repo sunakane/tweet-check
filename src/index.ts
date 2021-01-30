@@ -9,6 +9,7 @@ const app = new App({
 app.message("hello", async ({ message, say }) => {
   const msg = message as GenericMessageEvent;
   // say() sends a message to the channel where the event was triggered
+  console.log(msg);
   await say({
     blocks: [
       {
