@@ -5,6 +5,17 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
 });
 
+app.event("reaction_added", async ({ event, client }) => {
+  try {
+    const result = await client.chat.postMessage({
+      channel: "C01JBKHEQ90",
+      text: `${event.user} added ${event.reaction}`,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 // Listens to incoming messages that contain "hello"
 app.message("hello", async ({ message, say }) => {
   const msg = message as GenericMessageEvent;
